@@ -13,9 +13,8 @@ dominio=sys.argv[2]
 if os.path.isdir("/var/www/%s" % usuario) = False
 and os.path.isfile("/etc/apache2/sites-available/%s" %dominio) = False:
 	os.system("mkdir /var/www/%s" %usuario)
-	os.system("touch /etc/apache2/sites-available/%s" %dominio)
 else:
-	print "El usuario %s ya existe, introduzca otro usuario por favor." % (usuario)
+	print "El usuario o el dominio ya existen, introduzca otro usuario y dominio por favor." % (usuario)
 	exit()
 
 #Creamos el virtualhost en apache2
