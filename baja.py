@@ -22,3 +22,6 @@ os.system("rm /etc/apache2/sites-available/%s" % (dominio))
 os.system("sed '/zone " + '"%s"'% (dominio) + "/,/};/d' /etc/bind/named.conf.local > temporal")
 os.system("mv temporal /etc/bind/named.conf.local")
 os.system("rm /var/cache/bind/db.%s" % (dominio))
+
+#Fue todo correctamente
+print "El usuario y su dominio fue borrado con exito."

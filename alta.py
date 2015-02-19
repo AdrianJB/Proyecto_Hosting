@@ -43,6 +43,11 @@ lineas2 = lineas2.replace('**dominio**',dominio)
 ficherozonadb.write(lineas2)
 ficherozonadb.close()
 
+#Fue todo bien
+print "El usuario y su dominio se crearon con exito"
+#print "Su contraseña para ftp es: %s" % ()
+#print "Su contraseña para phpmyadmin: %s" %()
+
 #1 Verificar usuario y dominio X
 #2 Crear la carpeta del usuario X
 #	/srv/www/usuario			X
