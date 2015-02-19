@@ -10,8 +10,8 @@ dominio=sys.argv[2]
 #Comprobamos que no existen y creamos la carpeta si es asi, 
 #sino lanzamos error.
 
-if os.path.isdir("/var/www/%s" % usuario) == False
-and os.path.isfile("/etc/apache2/sites-available/%s" %dominio) == False:
+if os.path.isdir("/var/www/%s" % usuario) = False
+and os.path.isfile("/etc/apache2/sites-available/%s" %dominio) = False:
 	os.system("mkdir /var/www/%s" %usuario)
 else:
 	print "El usuario o el dominio ya existen, introduzca otro usuario y dominio por favor." % (usuario)
