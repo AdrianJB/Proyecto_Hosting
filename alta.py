@@ -36,12 +36,11 @@ ficheronamed.close()
 
 #Ficheros de la zona nueva
 plantillazonadb = open("zonadb","r")
-lineas3 = plantillazonadb.readlines()
+lineas2 = plantillazonadb.read()
 plantillazonadb.close()
 ficherozonadb = open("/var/cache/bind/db.%s" % (dominio),"w")
-for linea3 in lineas3:
-linea = linea.replace('dominio',dominio)
-ficherozonadb.write(linea)
+lineas2 = lineas2.replace('**dominio**',dominio)
+ficherozonadb.write(lineas2)
 ficherozonadb.close()
 
 #1 Verificar usuario y dominio X
