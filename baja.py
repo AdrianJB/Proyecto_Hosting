@@ -18,3 +18,6 @@ else:
 #Borramos el virtualhost
 os.system("a2disite %s" %dominio)
 os.system("rm /etc/apache2/sites-available/%s" %dominio)
+
+#Borramos la zona
+os.system("rm /var/cache/bind/db.%s" %dominio)
