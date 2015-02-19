@@ -4,8 +4,8 @@ import sys
 import os
 
 #Pedimos nombre de usuario y dominio
-usuario=(sys.argv[1])
-dominio=(sys.argv[2])
+usuario=sys.argv[1]
+dominio=sys.argv[2]
 
 #Comprobamos que no existen y creamos la carpeta si es asi, 
 #sino lanzamos error.

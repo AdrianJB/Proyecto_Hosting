@@ -4,8 +4,8 @@ import sys
 import os
 
 #Pedimos nombre de usuario y dominio
-usuario=(sys.argv[1])
-dominio=(sys.argv[2])
+usuario=sys.argv[1]
+dominio=sys.argv[2]
 
 #Comprobamos que existe
 if os.path.isdir("/var/www/%s" % usuario) == True
