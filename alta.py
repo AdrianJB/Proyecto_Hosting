@@ -103,4 +103,3 @@ else:
 print "El usuario y su dominio se crearon con exito"
 print"Esta es tu contrasena para MySql:%s"% (contrasennamysql)
 print"Esta es tu contrasena para el ftp:%s"% (contrasenna)
-#print "Su contraseña para phpmyadmin: %s" %()
