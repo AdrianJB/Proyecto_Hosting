@@ -8,8 +8,7 @@ usuario=sys.argv[1]
 dominio=sys.argv[2]
 
 #Comprobamos que existe
-if os.path.isdir("/var/www/%s" % (usuario)) == True
-and os.path.isfile("/etc/apache2/sites-available/%s" % (dominio)) == True:
+if os.path.isdir("/var/www/%s" % (usuario)) == True and os.path.isfile("/etc/apache2/sites-available/%s" % (dominio)) == True:
 	os.system("rm -r /var/www/%s" % (usuario))
 else:
 	print "El usuario o el dominio no existen, introduzca otro usuario y dominio por favor." % (usuario)
