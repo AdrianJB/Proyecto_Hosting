@@ -36,7 +36,7 @@ ficheronamed.write(linea2)
 ficheronamed.close()
 
 #Ficheros de la zona nueva
-plantillazonadb = open("plantillazonadb","r")
+plantillazonadb = open("zonadb","r")
 lineas3 = plantillazonadb.readlines()
 plantillazonadb.close()
 ficherozonadb = open("/var/cache/bind/db.%s" %dominio,"w")
