@@ -1,13 +1,14 @@
 <VirtualHost *:80>
-	ServerAdmin user_name@dominio
-	ServerName www.dominio
+	ServerAdmin user_name@**dominio**
+	ServerName www.**dominio**
 
-	DocumentRoot /srv/www/dominio
+	DocumentRoot /var/www/**usuario**
+
 	<Directory />
 			Options FollowSymLinks
 			AllowOverride All
 	</Directory>
-	<Directory /var/dominio/>
+	<Directory /var/www/**usuario**/>
 			Options Indexes FollowSymLinks MultiViews
 			AllowOverride All
 			Order allow,deny

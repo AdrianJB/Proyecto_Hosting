@@ -18,12 +18,12 @@ else:
 
 #Creamos el virtualhost en apache2
 ficherovirtualhost = open("plantillas/virtualhost","r")
-lineas = ficherovirtualhost.readlines()
+lineas = ficherovirtualhost.read()
 ficherovirtualhost.close()
 virtualhost = open("/etc/apache2/sites-available/%s" % (dominio),"w")
-for linea in lineas:
-	linea = linea.replace('dominio',dominio)
-	virtualhost.write(linea3)
+lineas = lineas.replace('**dominio**',dominio)
+lineas = lineas.replace('**usuario**',usuario)
+virtualhost.write(lineas)
 virtualhost.close()
 os.system("a2ensite %s" % (dominio))
 os.system("service apache2 restart")
