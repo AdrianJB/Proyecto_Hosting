@@ -25,8 +25,8 @@ lineas = lineas.replace('**dominio**',dominio)
 lineas = lineas.replace('**usuario**',usuario)
 virtualhost.write(lineas)
 virtualhost.close()
-os.system("a2ensite %s" % (dominio))
-os.system("service apache2 restart")
+os.system("a2ensite %s>/dev/null" % (dominio))
+os.system("service apache2 restart>/dev/null")
 
 #Introducir las zonas nuevas a named.conf.local
 linea2 = '\nzone ' +'"' + dominio +'"' +'{\ntype master;\nfile "db.'+ dominio +'"' +';\n}; '

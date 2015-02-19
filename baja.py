@@ -15,7 +15,7 @@ else:
 	exit()
 
 #Borramos el virtualhost
-os.system("a2dissite %s" % (dominio))
+os.system("a2dissite %s>/dev/null" % (dominio))
 os.system("rm /etc/apache2/sites-available/%s" % (dominio))
 
 #Borramos la zona
