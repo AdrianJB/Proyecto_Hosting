@@ -19,4 +19,6 @@ os.system("a2disite %s" % (dominio))
 os.system("rm /etc/apache2/sites-available/%s" % (dominio))
 
 #Borramos la zona
+os.system("sed '/zone " + '"%s"'% (dominio) + "/,/};/d' /etc/bind/named.conf.local > temporal")
+os.system("mv temporal /etc/bind/named.conf.local")
 os.system("rm /var/cache/bind/db.%s" % (dominio))
