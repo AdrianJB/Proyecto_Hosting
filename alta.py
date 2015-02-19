@@ -102,4 +102,8 @@ else:
 #Fue todo bien
 print "El usuario y su dominio se crearon con exito"
 print"Esta es tu contrasena para MySql:%s"% (contrasennamysql)
+<<<<<<< HEAD
 print"Esta es tu contrasena para el ftp:%s"% (contrasenna)
+=======
+print"Esta es tu contrasena para el ftp:%s"% (contrasenna)
+>>>>>>> cd93b73b67727b4984d29b1c52eb24ca230f2563
