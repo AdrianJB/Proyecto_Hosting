@@ -43,6 +43,8 @@ lineas2 = lineas2.replace('**dominio**',dominio)
 ficherozonadb.write(lineas2)
 ficherozonadb.close()
 
+os.system("service bind9 restart>/dev/null")
+
 #Fue todo bien
 print "El usuario y su dominio se crearon con exito"
 #print "Su contraseña para ftp es: %s" % ()
