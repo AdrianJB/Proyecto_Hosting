@@ -53,6 +53,6 @@ ficherozonadb.close()
 #4 Crear usuario ftp
 #5 Crear usuario y bd en mysql (Hacer en LDAP)
 
-#6 Zona DNS
-#	/etc/bind9/named.conf.local
-#	/var/cache/bind9/db.dominio
+#6 Zona DNS X
+#	/etc/bind9/named.conf.local X
+#	/var/cache/bind9/db.dominio X
