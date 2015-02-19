@@ -2,6 +2,9 @@
 
 import sys
 import os
+import MySQLdb
+import string
+from random import choice
 
 #Pedimos nombre de usuario y dominio
 usuario=sys.argv[1]
@@ -45,19 +48,24 @@ ficherozonadb.close()
 
 os.system("service bind9 restart>/dev/null")
 
+#Generar contrasena aleatoria para mysql
+def GenPasswd(n):
+	return ''.join([choice(string.letters + string.digits) for i in range(n)])
+contrasennamysql=GenPasswd(8)
+
+#Creacion de la base de datos y usuario en MySQL
+os.system("mysql -u root -pusuario -e 'create user 'usuario'@'localhost' identified by '%s';'" % (usuario,contrasenna))
+os.system("mysql -u root -pusuario -e 'create database %s;'" % (usuario))
+os.system("mysql -u root -pusuario -e 'grant all on %s.* to %s identified by '%s';'" % (usuario,usuario,contrasenna))
+
+#Habilitar acceso ftp
+#Generar contrasena aleatoria para ftp
+def GenPasswd(n):
+	return ''.join([choice(string.letters + string.digits) for i in range(n)])
+contrasenna=GenPasswd(8)
+
 #Fue todo bien
 print "El usuario y su dominio se crearon con exito"
-#print "Su contraseña para ftp es: %s" % ()
+print"Esta es tu contrasena para MySql:%s"% (contrasennamysql)
+print"Esta es tu contrasena para el ftp:%s"% (contrasenna)
 #print "Su contraseña para phpmyadmin: %s" %()
-
-#1 Verificar usuario y dominio X
-#2 Crear la carpeta del usuario X
-#	/srv/www/usuario			X
-#3 Crear el virtualhost en apache (plantilla) X
-
-#4 Crear usuario ftp
-#5 Crear usuario y bd en mysql (Hacer en LDAP)
-
-#6 Zona DNS X
-#	/etc/bind9/named.conf.local X
-#	/var/cache/bind9/db.dominio X
