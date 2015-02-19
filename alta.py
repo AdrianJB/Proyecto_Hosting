@@ -10,9 +10,9 @@ dominio=sys.argv[2]
 #Comprobamos que no existen y creamos la carpeta si es asi, 
 #sino lanzamos error.
 
-if os.path.isdir("/var/www/%s" % usuario) != True
-and os.path.isfile("/etc/apache2/sites-available/%s" %dominio) != True:
-	os.system("mkdir /var/www/%s" %usuario)
+if os.path.isdir("/var/www/%s" % (usuario)) != True
+and os.path.isfile("/etc/apache2/sites-available/%s" % (dominio)) != True:
+	os.system("mkdir /var/www/%s" % (usuario))
 else:
 	print "El usuario o el dominio ya existen, introduzca otro usuario y dominio por favor." % (usuario)
 	exit()
@@ -21,12 +21,12 @@ else:
 ficherovirtualhost = open("plantillas/virtualhost","r")
 lineas = ficherovirtualhost.readlines()
 ficherovirtualhost.close()
-virtualhost = open("/etc/apache2/sites-available/%s" %dominio,"w")
+virtualhost = open("/etc/apache2/sites-available/%s" % (dominio),"w")
 for linea in lineas:
 	linea = linea.replace('dominio',dominio)
 	virtualhost.write(linea3)
 virtualhost.close()
-os.system("a2ensite %s" %dominio)
+os.system("a2ensite %s" % (dominio))
 os.system("service apache2 restart")
 
 #Introducir las zonas nuevas a named.conf.local
@@ -39,7 +39,7 @@ ficheronamed.close()
 plantillazonadb = open("zonadb","r")
 lineas3 = plantillazonadb.readlines()
 plantillazonadb.close()
-ficherozonadb = open("/var/cache/bind/db.%s" %dominio,"w")
+ficherozonadb = open("/var/cache/bind/db.%s" % (dominio),"w")
 for linea3 in lineas3:
 linea = linea.replace('dominio',dominio)
 ficherozonadb.write(linea)
