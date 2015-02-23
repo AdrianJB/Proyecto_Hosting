@@ -29,7 +29,7 @@ lineas = lineas.replace('**usuario**',usuario)
 virtualhost.write(lineas)
 virtualhost.close()
 #Introducimos el index en construccion
-ficheroindex = open("plantilla/index.html","r")
+ficheroindex = open("plantillas/index.html","r")
 lineas2 = ficheroindex.read()
 ficheroindex.close()
 os.system("touch /var/www/%s/index.html" % (usuario))
@@ -64,7 +64,7 @@ def GenPasswd(n):
 contrasennamysql=GenPasswd(8)
 
 #Creacion de la base de datos y usuario en MySQL
-os.system("mysql -u root -pusuario -e 'create user 'usuario'@'localhost' identified by '%s';'" % (usuario,contrasennamysql))
+os.system("mysql -u root -pusuario -e 'create user '%s'@'localhost' identified by '%s';'" % (usuario,contrasennamysql))
 os.system("mysql -u root -pusuario -e 'create database %s;'" % (usuario))
 os.system("mysql -u root -pusuario -e 'grant all on %s.* to %s identified by '%s';'" % (usuario,usuario,contrasennamysql))
 
@@ -84,7 +84,7 @@ consulta_uid = cursor.fetchone()
 #si la tabla esta vacia introduce el 3001
 if consulta_uid[0] == None:
 	conuid=str("3001")
-	usermysql="insert into usuarios values('"+ nombre+"'," +"PASSWORD('"+contrasenna+"'),"+conuid+","+conuid+","+"'/var/www/"+nombre+"',"+"'/bin/false1',"+"1,'"+dominio+"');"
+	usermysql="insert into usuarios values('"+ usuario+"'," +"PASSWORD('"+contrasenna+"'),"+conuid+","+conuid+","+"'/var/www/"+usuario+"',"+"'/bin/false1',"+"1,'"+dominio+"');"
 	cursor.execute(usermysql)
 	base.commit()
 #cambiamos el propietario de la carpeta /var/www
@@ -93,7 +93,7 @@ if consulta_uid[0] == None:
 else:
 	conuid=consulta_uid[0]+1
 	conuidn=str(conuid)
-	usermysql="insert into usuarios values('"+ nombre+"'," +"PASSWORD('"+contrasenna+"'),"+conuidn+","+conuidn+","+"'/var/www/"+nombre+"',"+"'/bin/false1',"+"1,'"+dominio+"');"
+	usermysql="insert into usuarios values('"+ usuario+"'," +"PASSWORD('"+contrasenna+"'),"+conuidn+","+conuidn+","+"'/var/www/"+usuario+"',"+"'/bin/false1',"+"1,'"+dominio+"');"
 	cursor.execute(usermysql)
 	base.commit()
 #cambiamos el propietario de la carpeta /var/www
