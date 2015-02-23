@@ -64,7 +64,7 @@ def GenPasswd(n):
 contrasennamysql=GenPasswd(8)
 
 #Creacion de la base de datos y usuario en MySQL
-os.system("mysql -u root -pusuario -e 'create user '%s'@'localhost' identified by '%s';'" % (usuario,contrasennamysql))
+os.system("mysql -u root -pusuario -e 'create user '%s'@'*' identified by '%s';'" % (usuario,contrasennamysql))
 os.system("mysql -u root -pusuario -e 'create database %s;'" % (usuario))
 os.system("mysql -u root -pusuario -e 'grant all on %s.* to %s identified by '%s';'" % (usuario,usuario,contrasennamysql))
 
@@ -101,5 +101,5 @@ else:
 
 #Fue todo bien
 print "El usuario y su dominio se crearon con exito"
-print"Esta es tu contrasena para MySql:%s"% (contrasennamysql)
-print"Esta es tu contrasena para el ftp:%s"% (contrasenna)
+print"Esta es tu contrasena para MySql: %s"% (contrasennamysql)
+print"Esta es tu contrasena para el ftp: %s"% (contrasenna)
