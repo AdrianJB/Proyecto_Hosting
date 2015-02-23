@@ -18,7 +18,7 @@ if sistema == "mysql":
 		cambio = "SET PASSWORD FOR my%s@localhost = PASSWORD('%s');" % (usuario,contrasenanueva)
 		cursor.execute(cambio)
 		base.commit()
-		print "Contrasena del usuario para mysql actualizada correctamente"
+		print "Contrasena del usuario para mysql actualizada correctamente."
 	else:
 		print "El usuario %s no existe, introduzca otro usuario por favor." % (usuario)
 		exit()
@@ -28,9 +28,9 @@ elif sistema == "ftp":
 		base2 = MySQLdb.connect(host="localhost", user="root", passwd="usuario", db="ftp")
 		cursor2 = base2.cursor()
 		cambio2 = "update usuarios set password = PASSWORD('%s')where username='%s';" % (contrasenanueva,usuario)
-		cursor.execute(cambio2)
+		cursor2.execute(cambio2)
 		base2.commit()
-		print "Contrasena del usuario para FTP actualizada correctamente"
+		print "Contrasena del usuario para FTP actualizada correctamente."
 	else:
 		print "El usuario %s no existe, introduzca otro usuario por favor." % (usuario)
 		exit()
