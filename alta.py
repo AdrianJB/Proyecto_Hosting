@@ -19,7 +19,7 @@ else:
 	print "El usuario o el dominio ya existen, introduzca otro usuario y dominio por favor." % (usuario)
 	exit()
 
-#Creamos el virtualhost en apache2
+#Creamos el virtualhost para el sitio web en apache2
 ficherovirtualhost = open("plantillas/virtualhost","r")
 lineas = ficherovirtualhost.read()
 ficherovirtualhost.close()
@@ -39,6 +39,18 @@ index.write(lineas2)
 index.close()
 #Activamos el sitio y reiniciamos Apache2
 os.system("a2ensite %s>/dev/null" % (dominio))
+os.system("service apache2 restart>/dev/null")
+
+#Creamos el virtualhost para el phpmyadmin de este usuario en apache2
+ficherovirtualhostmysql = open("plantillas/virtualhost_mysql","r")
+lineas4 = ficherovirtualhostmysql.read()
+ficherovirtualhostmysql.close()
+virtualhostmysql = open("/etc/apache2/sites-available/mysql_%s" % (dominio),"w")
+lineas4 = lineas4.replace('**dominio**',dominio)
+virtualhostmysql.write(lineas4)
+virtualhostmysql.close()
+#Activamos el sitio y reiniciamos Apache2
+os.system("a2ensite mysql_%s>/dev/null" % (dominio))
 os.system("service apache2 restart>/dev/null")
 
 #Introducir las zonas nuevas a named.conf.local
