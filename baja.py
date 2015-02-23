@@ -29,7 +29,7 @@ base = MySQLdb.connect(host="localhost", user="root", passwd="usuario", db="ftp"
 cursor=base.cursor()
 
 #Borramos el usuario en mysql y su base de datos
-borrarbd="drop database %s" % (usuario)
+borrarbd="drop database my%s" % (usuario)
 cursor.execute(borrarbd)
 base.commit()
 borrausu=" drop user my%s@localhost" % (usuario)
