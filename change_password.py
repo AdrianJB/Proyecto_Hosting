@@ -26,9 +26,9 @@ elif sistema == "ftp":
 	if os.path.isdir("/var/www/%s" % (usuario)) == True:
 		#Abrimos una conexion con la base de datos que contiene los usuarios virtuales
 		base2 = MySQLdb.connect(host="localhost", user="root", passwd="usuario", db="ftp")
-		cursor2 = base2.cursor2()
+		cursor2 = base2.cursor()
 		cambio2 = "update usuarios set password = PASSWORD('%s')where username='%s';" % (contrasenanueva,usuario)
-		cursor2.execute(cambio2)
+		cursor.execute(cambio2)
 		base2.commit()
 		print "Contrasena del usuario para FTP actualizada correctamente"
 	else:
