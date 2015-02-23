@@ -112,5 +112,6 @@ os.system("mysql -u root -pusuario -e \"grant all on my%s.* to \'my%s\'@\'localh
 
 #Fue todo bien
 print "El usuario y su dominio se crearon con exito"
+print"El usuario %s tiene esta contrasena para el ftp: %s"% (usuario,contrasenna)
+print "El usuario para mysql es: my%s" % (usuario)
 print"Esta es tu contrasena para MySql: %s"% (contrasennamysql)
-print"Esta es tu contrasena para el ftp: %s"% (contrasenna)
