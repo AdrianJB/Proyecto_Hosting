@@ -12,7 +12,7 @@ dominio=sys.argv[2]
 if os.path.isdir("/var/www/%s" % (usuario)) == True and os.path.isfile("/etc/apache2/sites-available/%s" % (dominio)) == True:
 	os.system("rm -r /var/www/%s" % (usuario))
 else:
-	print "El usuario o el dominio no existen, introduzca otro usuario y dominio por favor." % (usuario)
+	print "El usuario %s o el dominio no existen, introduzca otro usuario y dominio por favor." % (usuario)
 	exit()
 
 #Borramos el virtualhost
