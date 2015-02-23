@@ -17,6 +17,28 @@ else:
 #Borramos el virtualhost
 os.system("a2dissite %s>/dev/null" % (dominio))
 os.system("rm /etc/apache2/sites-available/%s" % (dominio))
+#Borramos el virtualhost para mysql
+os.system("a2dissite mysql_%s>/dev/null" % (dominio))
+os.system("rm /etc/apache2/sites-available/mysql_%s" % (dominio))
+#Reiniciamos apache2
+os.system("service apache2 restart>/dev/null")
+
+#Abrimos una conexion con la base de datos que contiene los usuarios virtuales
+base = MySQLdb.connect(host="localhost", user="root", passwd="usuario", db="ftp")
+cursor=base.cursor()
+
+#Borramos el usuario en mysql y su base de datos
+borrarbd="drop database %s" % (usuario)
+cursor.execute(borrarbd)
+base.commit()
+borrausu=" drop user my%s@localhost" % (usuario)
+cursor.execute(borrausu)
+base.commit()
+#Borramos el usuario para ftp
+borrarcol="delete from usuarios where ndominio='%s';" % (dominio)
+cursor.execute(borrarcol)
+base.commit()
+base.close()
 
 #Borramos la zona
 os.system("sed '/zone " + '"%s"'% (dominio) + "/,/};/d' /etc/bind/named.conf.local > temporal")
