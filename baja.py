@@ -2,6 +2,7 @@
 
 import sys
 import os
+import MySQLdb
 
 #Pedimos nombre de usuario y dominio
 usuario=sys.argv[1]
