@@ -64,10 +64,10 @@ def GenPasswd(n):
 contrasennamysql=GenPasswd(8)
 
 #Creacion de la base de datos y usuario en MySQL
-os.system("mysql -u root -pusuario -e 'create user \'%s\'@\'0.0.0.0\' identified by \'%s\';'" % (usuario,contrasennamysql))
-os.system("mysql -u root -pusuario -e 'create database %s;'" % (usuario))
-os.system("mysql -u root -pusuario -e 'grant all on %s.* to %s identified by \'%s\';'" % (usuario,usuario,contrasennamysql))
-os.system("mysql -u root -pusuario -e 'flush privileges;'")
+os.system("mysql -u root -pusuario -e \'create user \'%s\'@\'0.0.0.0\' identified by \'%s\';\'" % (usuario,contrasennamysql))
+os.system("mysql -u root -pusuario -e \'create database %s;\'" % (usuario))
+os.system("mysql -u root -pusuario -e \'grant all on %s.* to %s identified by \'%s\';\'" % (usuario,usuario,contrasennamysql))
+os.system("mysql -u root -pusuario -e \'flush privileges;\'")
 
 #Habilitar acceso ftp
 #Generar contrasena aleatoria para ftp
