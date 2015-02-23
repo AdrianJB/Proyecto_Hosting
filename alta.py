@@ -58,17 +58,6 @@ ficherozonadb.close()
 
 os.system("service bind9 restart>/dev/null")
 
-#Generar contrasena aleatoria para mysql
-def GenPasswd(n):
-	return ''.join([choice(string.letters + string.digits) for i in range(n)])
-contrasennamysql=GenPasswd(8)
-
-#Creacion de la base de datos y usuario en MySQL
-os.system("mysql -u root -pusuario -e \'create user \'%s\'@\'0.0.0.0\' identified by \'%s\';\'" % (usuario,contrasennamysql))
-os.system("mysql -u root -pusuario -e \'create database %s;\'" % (usuario))
-os.system("mysql -u root -pusuario -e \'grant all on %s.* to %s identified by \'%s\';\'" % (usuario,usuario,contrasennamysql))
-os.system("mysql -u root -pusuario -e \'flush privileges;\'")
-
 #Habilitar acceso ftp
 #Generar contrasena aleatoria para ftp
 def GenPasswd(n):
@@ -99,6 +88,15 @@ else:
 	base.commit()
 #cambiamos el propietario de la carpeta /var/www
 	os.system("chown -R %s:%s /var/www/%s" % (conuid,conuid,usuario))
+
+#Generar contrasena aleatoria para mysql
+def GenPasswd(n):
+	return ''.join([choice(string.letters + string.digits) for i in range(n)])
+contrasennamysql=GenPasswd(8)
+
+#Creacion de la base de datos y usuario en MySQL
+os.system("mysql -u root -pusuario -e \'create database my%s;\'" % (usuario))
+os.system("mysql -u root -pusuario -e \'grant all on my%s.* to \'my%s\'@\'localhost\' identified by \'%s\';\'" % (usuario,usuario,contrasennamysql))
 
 #Fue todo bien
 print "El usuario y su dominio se crearon con exito"
